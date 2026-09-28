@@ -54,7 +54,7 @@ function changePhoto(index: number) { if (overlay.value.kind === 'lightbox') ove
 <template>
   <div ref="root" class="invitation-experience" :data-enhanced="enhanced" :data-motion-paused="manualPaused || systemReduced" :data-motion-ready="sceneMotionAllowed">
     <main id="main" :inert="enhanced && opening !== 'open' ? true : undefined">
-      <OpenedHero :hero="content.hero" :poster="image(content.hero.posterId)" :darkening="darkening" :media-paused="!sceneMotionAllowed" />
+      <OpenedHero :hero="content.hero" :poster="image(content.hero.posterId)" :foreground="content.hero.foregroundId ? image(content.hero.foregroundId) : undefined" :darkening="darkening" :media-paused="!sceneMotionAllowed" />
       <EventChangeNotice :lifecycle="invitation.lifecycle" />
       <QuotePassage :quote="content.quote" :images="quoteImages" />
       <ProfilesSection :profiles="content.profiles" :images="profileImages" />

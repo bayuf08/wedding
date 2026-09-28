@@ -8,7 +8,8 @@ test('opens the invitation with the supplied static hero image', async ({ page }
   await expect(page.locator('.opening-cover')).toHaveCount(0)
   await expect(page.locator('main')).not.toHaveAttribute('inert')
   await expect(page.locator('.hero-video')).toHaveCount(0)
-  await expect(page.locator('#welcome img')).toHaveAttribute('src', '/images/kv.png')
+  await expect(page.locator('.hero-media--base img')).toHaveAttribute('src', '/images/kv.png')
+  await expect(page.locator('.hero-media--foreground img')).toHaveAttribute('src', '/images/kv-transparent.png')
 })
 
 test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }) => {
@@ -51,8 +52,9 @@ test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }
   await page.keyboard.press('Escape')
   await expect(firstPhoto).toBeFocused()
 
+  const calendarDownload = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Add to Calendar' }).click()
-  await expect(page.locator('.calendar-action [role="status"]')).toContainText('not available in this preview')
+  expect((await calendarDownload).suggestedFilename()).toBe('bayu-hilwa-wedding.ics')
   await page.locator('.video-frame').hover({ position: { x: 110, y: 110 } })
   await expect(page.locator('.video-pointer')).toHaveClass(/is-visible/)
   await page.getByRole('button', { name: 'PLAY', exact: true }).click()

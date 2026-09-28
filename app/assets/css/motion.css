@@ -1,7 +1,10 @@
 @keyframes claire-ribbon { to { transform: translateX(-50%); } }
+@keyframes hero-marquee { to { transform: translate3d(-50%, 0, 0); } }
+.hero-marquee--ready .hero-marquee-track { animation: hero-marquee 20s linear infinite; }
 .claire-ribbon-track { display: flex; width: max-content; animation: claire-ribbon 20s linear infinite; }
 .claire-ribbon-half { flex: none; white-space: nowrap; }
 .invitation-experience[data-motion-paused='true'] .claire-ribbon-track,
+.invitation-experience[data-motion-paused='true'] .hero-marquee-track,
 .invitation-experience[data-motion-paused='true'] .story-slideshow { animation-play-state: paused; }
 .motion-entry { opacity: 1; transition: opacity 1s ease-in-out; }
 .motion-entry.is-visible { transition-delay: var(--entry-delay, 100ms); }
@@ -13,6 +16,8 @@
   html { scroll-behavior: auto !important; }
   .opening-cover { transition: none !important; }
   .claire-ribbon-track { animation: none !important; }
+  .hero-marquee-track { animation: none !important; }
+  .hero-marquee-half:not(:first-child) { display: none; }
   .motion-entry { opacity: 1 !important; transition: none !important; }
   .reveal-frame { clip-path: none !important; }
 }

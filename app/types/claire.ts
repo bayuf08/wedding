@@ -4,6 +4,8 @@ export interface ImageAsset {
   id: string
   src: string
   mobileSrc?: string
+  mobileWidth?: number
+  mobileHeight?: number
   width: number
   height: number
   alt: string
@@ -35,7 +37,7 @@ export interface WishRecord { id: string; name: string; dateLabel: string; messa
 export interface CalendarRecord { uid: string; title: string; startsAt: string; endsAt: string; location: string }
 export interface ClaireContent {
   cover: { imageId: string; eyebrow: string; names: string; dateLabel: string; apology: string }
-  hero: { posterId: string; videoSrc: string | null; audioSrc: string | null; occasion: string; names: string; dateLabel: string; scripture: string; attribution: string }
+  hero: { posterId: string; foregroundId?: string; videoSrc: string | null; audioSrc: string | null; occasion: string; names: string; dateLabel: string; scripture: string; attribution: string }
   quote: { text: string; imageIds: [string, string, string] }
   profiles: [ProfileRecord, ProfileRecord]
   story: { caption: string; imageIds: string[]; chapters: [ChapterRecord, ChapterRecord, ChapterRecord] }

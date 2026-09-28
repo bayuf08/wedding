@@ -27,7 +27,7 @@ export const invitationFixture: InvitationViewModel = {
   content: {
     cover: { imageId: 'cover', eyebrow: 'The Wedding of', names: 'Bayu - Hilwa', dateLabel: 'SATURDAY, 26 DECEMBER 2026', apology: 'We apologize if there is any misspelling of name or title' },
     hero: {
-      posterId: 'hero-kv', videoSrc: null, audioSrc: null, occasion: 'THE WEDDING OF', names: 'Bayu - Hilwa', dateLabel: 'SATURDAY, 26 DECEMBER 2026',
+      posterId: 'hero-kv', foregroundId: 'hero-kv-foreground', videoSrc: null, audioSrc: null, occasion: 'THE WEDDING OF', names: 'Bayu - Hilwa', dateLabel: 'SATURDAY, 26 DECEMBER 2026',
       scripture: '“And among His signs is that Allah created for you spouses from among yourselves, so that you may find tranquility in them, and Allah placed between you love and mercy.”',
       attribution: 'Ar-Rum 30:21',
     },
