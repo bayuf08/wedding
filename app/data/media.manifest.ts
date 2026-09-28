@@ -1,0 +1,64 @@
+import type { ImageAsset, FocalPoint, ImageSource } from '../types/claire'
+
+const root = '/images/claire/'
+function image(id: string, file: string, width: number, height: number, alt: string, options: { phone?: FocalPoint; desktop?: FocalPoint; monochrome?: boolean; month?: '01' | '03' } = {}): ImageAsset {
+  const stem = file.replace(/\.(?:jpe?g)$/i, '')
+  const sources: ImageSource[] = [640, 1200, 1680].filter(w => w <= width).map(w => ({ src: `${root}${stem}-${w}.webp`, width: w, format: 'webp' as const }))
+  return {
+    id, src: `${root}${file}`, width, height, alt, sources,
+    focal: { desktop: options.desktop || '50% 50%', phone: options.phone || '50% 50%' },
+    monochrome: Boolean(options.monochrome),
+    provenance: { sourceUrl: `https://groovepublic.com/wp-content/uploads/2025/${options.month || '03'}/${file}`, status: 'usable-original', credit: 'Groove Public / Claire reference' },
+  }
+}
+
+export const mediaManifest: Record<string, ImageAsset> = {
+  cover: image('cover', 'dexter-hualin-00146-Large.jpeg', 858, 1280, 'Bayu and Hilwa beside a lake and mountains', { month: '01', phone: '52% 50%' }),
+  'hero-kv': {
+    id: 'hero-kv',
+    src: '/images/kv.png',
+    mobileSrc: '/images/kv-mobile',
+    width: 1672,
+    height: 941,
+    alt: 'Bayu and Hilwa',
+    sources: [],
+    focal: { desktop: '50% 50%', phone: '50% 50%' },
+    monochrome: false,
+    provenance: { sourceUrl: null, status: 'supplied', credit: 'Supplied by Bayu and Hilwa' },
+  },
+  loader: image('loader', 'dexter-hualin-00197-Large.jpeg', 858, 1280, 'Travel photographs of Bayu and Hilwa', { month: '01' }),
+  hero: image('hero', 'dexter-hualin-00183-Large.jpeg', 1280, 858, 'Bayu and Hilwa with Mount Fuji behind them', { month: '01', phone: '58% 50%' }),
+  'quote-a': image('quote-a', 'dexter-hualin-00197-Large.jpeg', 858, 1280, 'Travel moments in Japan', { month: '01' }),
+  'quote-b': image('quote-b', 'dexter-hualin-00206.jpg', 1372, 2048, 'Bayu and Hilwa in a monochrome field', { month: '01', monochrome: true }),
+  'quote-c': image('quote-c', 'dexter-hualin-00195-Large.jpeg', 858, 1280, 'Monochrome portraits from their journey', { monochrome: true }),
+  bride: image('bride', 'dexter-hualin-00145-Large.jpeg', 858, 1280, 'Portrait of Hilwa', { monochrome: true, phone: '46% 45%' }),
+  groom: image('groom', 'dexter-hualin-00183-Large.jpeg', 1280, 858, 'Portrait of Bayu near Mount Fuji', { month: '01', phone: '68% 45%' }),
+  'story-1': image('story-1', 'dexter-hualin-00169.jpg', 1372, 2048, 'The couple in an architectural doorway'),
+  'story-2': image('story-2', 'dexter-hualin-00192.jpg', 1372, 2048, 'The couple outside a Lawson shop'),
+  'story-3': image('story-3', 'dexter-hualin-00168.jpg', 2048, 1372, 'The couple sharing a moment over ice cream', { monochrome: true }),
+  'story-4': image('story-4', 'dexter-hualin-00164.jpg', 2048, 1372, 'Bayu and Hilwa in a grassy field'),
+  'story-5': image('story-5', 'dexter-hualin-00153-Large.jpeg', 1280, 858, 'The couple together in warm evening light'),
+  'story-6': image('story-6', 'dexter-hualin-4975645345rge523.jpg', 1280, 858, 'The couple in a monochrome field', { monochrome: true }),
+  celebration: image('celebration', 'dexter-hualin-00198.jpg', 1372, 2048, 'Bayu and Hilwa near Mount Fuji', { monochrome: true }),
+  gift: image('gift', 'dexter-hualin-00179.jpg', 1372, 1303, 'The couple beneath diagonal sunlight'),
+  mountain: image('mountain', 'dexter-hualin-00216-Large.jpeg', 858, 1280, 'Mount Fuji under a bright blue sky', { month: '01', desktop: '50% 50%', phone: '50% 50%' }),
+  'feature-poster': image('feature-poster', 'dexter-hualin-00168.jpg', 2048, 1372, 'Bayu and Hilwa sharing a quiet moment', { monochrome: true }),
+  menu: image('menu', 'dexter-hualin-00153-Large.jpeg', 1280, 858, 'Bayu and Hilwa together'),
+  closing: image('closing', 'dexter-hualin-00155.jpg', 2048, 1372, 'The couple beside a train window'),
+  'gallery-01': image('gallery-01', 'dexter-hualin-00203-Large.jpeg', 858, 1280, 'Bayu and Hilwa by a blue lake'),
+  'gallery-02': image('gallery-02', 'dexter-hualin-00155.jpg', 2048, 1372, 'The couple beside a train window'),
+  'gallery-03': image('gallery-03', 'dexter-hualin-00208.jpg', 2048, 1372, 'Close portrait of the couple'),
+  'gallery-04': image('gallery-04', 'dexter-hualin-00207.jpg', 2048, 1372, 'Station and mountains in Japan'),
+  'gallery-05': image('gallery-05', 'dexter-hualin-00198.jpg', 1372, 2048, 'The couple near Mount Fuji in monochrome', { monochrome: true }),
+  'gallery-06': image('gallery-06', 'dexter-hualin-00192.jpg', 1372, 2048, 'The couple outside a Lawson shop'),
+  'gallery-07': image('gallery-07', 'dexter-hualin-00169.jpg', 1372, 2048, 'The couple in an architectural doorway'),
+  'gallery-08': image('gallery-08', 'dexter-hualin-00168.jpg', 2048, 1372, 'The couple enjoying ice cream', { monochrome: true }),
+  'gallery-09': image('gallery-09', 'dexter-hualin-00179.jpg', 1372, 1303, 'The couple beneath diagonal sunlight'),
+  'gallery-10': image('gallery-10', 'dexter-hualin-00195-Large.jpeg', 858, 1280, 'A monochrome collage of the couple', { monochrome: true }),
+  'gallery-11': image('gallery-11', 'dexter-hualin-4975645fdfd345rge523.jpg', 2048, 1372, 'Mount Fuji beside a building'),
+  'gallery-12': image('gallery-12', 'dexter-hualin-4975645345rge523.jpg', 1280, 858, 'The couple in a monochrome field', { monochrome: true }),
+  'gallery-13': image('gallery-13', 'dexter-hualin-00145-Large.jpeg', 858, 1280, 'Monochrome portrait of Hilwa', { monochrome: true }),
+  'gallery-14': image('gallery-14', 'dexter-hualin-49756523.jpg', 1197, 773, 'The couple facing Mount Fuji by a lake'),
+  'gallery-15': image('gallery-15', 'dexter-hualin-00182-Largffe.jpeg', 1067, 799, 'The couple together in a field'),
+  'gallery-16': image('gallery-16', 'dexter-hualin-00153-Large.jpeg', 1280, 858, 'The couple in golden evening light'),
+}

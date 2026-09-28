@@ -1,0 +1,18 @@
+@keyframes claire-ribbon { to { transform: translateX(-50%); } }
+.claire-ribbon-track { display: flex; width: max-content; animation: claire-ribbon 20s linear infinite; }
+.claire-ribbon-half { flex: none; white-space: nowrap; }
+.invitation-experience[data-motion-paused='true'] .claire-ribbon-track,
+.invitation-experience[data-motion-paused='true'] .story-slideshow { animation-play-state: paused; }
+.motion-entry { opacity: 1; transition: opacity 1s ease-in-out; }
+.motion-entry.is-visible { transition-delay: var(--entry-delay, 100ms); }
+.motion-entry[data-entry='heading'] { --entry-delay: 200ms; }
+.motion-entry[data-entry='quote'] { --entry-delay: 800ms; }
+.motion-entry[data-entry='blessing'] { --entry-delay: 200ms; transition-duration: 800ms; }
+.invitation-experience[data-motion-ready='true'] .motion-entry:not(.is-visible) { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .opening-cover { transition: none !important; }
+  .claire-ribbon-track { animation: none !important; }
+  .motion-entry { opacity: 1 !important; transition: none !important; }
+  .reveal-frame { clip-path: none !important; }
+}

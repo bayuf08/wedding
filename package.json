@@ -1,0 +1,45 @@
+{
+  "name": "frontend",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:visual": "CAPTURE_VISUAL=1 playwright test tests/browser/reference-captures.spec.ts",
+    "media:prepare": "node scripts/prepare-media.mjs",
+    "reference:prepare": "node scripts/prepare-reference.mjs",
+    "reference:compare": "node scripts/compare-reference.mjs",
+    "typecheck": "nuxi typecheck && vue-tsc --noEmit --project tests/tsconfig.json",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/bodoni-moda": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "@fontsource/playfair-display-sc": "^5.3.0",
+    "@fontsource/roboto": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "nuxt": "^4.5.2",
+    "tailwindcss": "^4.3.3",
+    "vue": "^3.5.43",
+    "vue-router": "^5.3.1"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "^4.3.2",
+    "@playwright/test": "^1.63.0",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "@vue/test-utils": "^2.5.1",
+    "happy-dom": "^20.14.5",
+    "pixelmatch": "^7.2.0",
+    "sharp": "^0.35.4",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1",
+    "vue-tsc": "^3.3.11"
+  }
+}

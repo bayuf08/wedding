@@ -1,0 +1,25 @@
+@theme {
+  --color-claire-dark: #000000;
+  --color-claire-loading: #f3f3f3;
+  --color-claire-event: #e9e9e9;
+  --color-claire-gallery: #cfcfcf;
+  --color-claire-closing: #080808;
+  --color-claire-light: #c2c2c2;
+  --color-claire-ink: #202020;
+  --color-claire-quote: #a98a70;
+  --font-claire-display: 'Playfair Display', Georgia, serif;
+  --font-claire-caption: 'Bodoni Moda', Georgia, serif;
+  --font-claire-countdown: 'Playfair Display SC', Georgia, serif;
+  --font-claire-body: 'Inter', Arial, sans-serif;
+}
+.invitation-experience {
+  --content-max: 1140px;
+  --phone-content-gutter: 35px;
+  --gallery-title-inset: 90px;
+  --gallery-photo-offset: 450px;
+  --gallery-photo-gap: 23px;
+  color: #c2c2c2;
+  background: #000;
+}
+@media (min-width: 768px) { .invitation-experience { --gallery-photo-offset: 400px; --gallery-photo-gap: 10px; } }
+@media (min-width: 1025px) { .invitation-experience { --gallery-photo-gap: 60px; } }

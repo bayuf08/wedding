@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "@fontsource/playfair-display/latin-400.css";
+@import "@fontsource/playfair-display/latin-400-italic.css";
+@import "@fontsource/playfair-display/latin-600-italic.css";
+@import "@fontsource/playfair-display-sc/latin-400.css";
+@import "@fontsource/bodoni-moda/latin-400.css";
+@import "@fontsource/inter/latin-300.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/roboto/latin-400.css";
+@import "./tokens.css";
+@import "./typography.css";
+@import "./motion.css";
+@import "./access-shell.css";
+@import "./scenes.css";
+
+* { box-sizing: border-box; }
+html { background: #000; }
+body { margin: 0; min-width: 320px; color: #c2c2c2; background: #000; font-family: 'Inter', Arial, sans-serif; font-weight: 300; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+::selection { color: #fff; background: #705c4c; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.skip-link { position: fixed; z-index: 200; top: 8px; left: 8px; transform: translateY(-200%); padding: 10px 14px; color: #111; background: #f3f3f3; }
+.skip-link:focus { transform: none; }
+.responsive-photo { width: 100%; height: 100%; object-fit: cover; object-position: var(--photo-desktop-position, 50% 50%); }
+.responsive-photo--fallback { display: grid; place-items: center; width: 100%; min-height: 120px; color: #c2c2c2; background: #292929; font-size: 14px; }
+@media (max-width: 767px) { .responsive-photo { object-position: var(--photo-phone-position, 50% 50%); } }
