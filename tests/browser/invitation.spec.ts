@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test'
+import { invitationFixture } from '../../app/data/invitation.fixture'
+const galleryCount = invitationFixture.content.gallery.imageIds.length
 
 test('opens the invitation with the supplied static hero image', async ({ page }) => {
   await page.goto('/invite/demo?to=Guest+Name')
@@ -21,14 +23,11 @@ test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }
   await page.getByRole('button', { name: 'Open navigation' }).click()
   await page.getByRole('button', { name: 'RSVP', exact: true }).click()
   await expect(page.locator('#rsvp')).toBeFocused()
-  await page.getByRole('button', { name: 'Send Confirmation' }).click()
-  await expect(page.locator('#rsvp-attendance-error')).toBeVisible()
-  await page.getByRole('radio', { name: 'Attending', exact: true }).check()
-  await expect(page.locator('#rsvp-eventId')).toBeVisible()
-  await page.getByRole('radio', { name: 'Akad Nikah', exact: true }).check()
-  await page.getByRole('radio', { name: '2 guests', exact: true }).check()
-  await page.getByRole('button', { name: 'Send Confirmation' }).click()
-  await expect(page.locator('.rsvp-form .form-status')).toContainText('saved for this preview')
+  await page.getByRole('button', { name: 'Review RSVP' }).click()
+  await expect(page.locator('#rsvp-attendanceCount-error')).toBeVisible()
+  await page.locator('#rsvp-attendanceCount').fill('2')
+  await page.getByRole('button', { name: 'Review RSVP' }).click()
+  await expect(page.locator('.rsvp-form .form-status')).toContainText('Nothing has been sent or saved')
 
   await page.getByRole('button', { name: 'Next »' }).click()
   await expect(page.locator('#wishes-title').locator('..')).toContainText('Page 2 of 2')
@@ -37,20 +36,20 @@ test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }
   await expect(page.locator('#gift .bank-number').first()).toBeVisible()
   await page.getByRole('button', { name: 'Confirm Gift', exact: true }).click()
   await expect(page.getByRole('dialog', { name: 'Wedding gift' })).toBeVisible()
-  await page.getByRole('button', { name: 'Send Gift Confirmation', exact: true }).click()
+  await page.getByRole('button', { name: 'Review Gift Confirmation', exact: true }).click()
   await expect(page.locator('.gift-form-panel .field-error')).toHaveCount(3)
   await page.locator('#gift-name').fill('Alex')
-  await page.locator('#gift-bank').selectOption('preview-a')
+  await page.locator('#gift-bank').check()
   await page.locator('#gift-amount').fill('50000')
-  await page.getByRole('button', { name: 'Send Gift Confirmation', exact: true }).click()
-  await expect(page.getByRole('dialog', { name: 'Wedding gift' })).toContainText('Preview confirmation recorded')
+  await page.getByRole('button', { name: 'Review Gift Confirmation', exact: true }).click()
+  await expect(page.getByRole('dialog', { name: 'Wedding gift' })).toContainText('Gift details checked on this page')
   await page.getByRole('button', { name: 'Close gift panel' }).click()
 
-  const firstPhoto = page.getByRole('button', { name: /Open photo 1 of 16/ })
+  const firstPhoto = page.getByRole('button', { name: new RegExp(`Open photo 1 of ${galleryCount}:`) })
   await firstPhoto.click()
-  await expect(page.getByRole('dialog', { name: 'Photo gallery' })).toContainText('1 / 16')
+  await expect(page.getByRole('dialog', { name: 'Photo gallery' })).toContainText(`1 / ${galleryCount}`)
   await page.getByRole('button', { name: 'Next photo' }).click()
-  await expect(page.getByRole('dialog', { name: 'Photo gallery' })).toContainText('2 / 16')
+  await expect(page.getByRole('dialog', { name: 'Photo gallery' })).toContainText(`2 / ${galleryCount}`)
   await page.keyboard.press('Escape')
   await expect(firstPhoto).toBeFocused()
 

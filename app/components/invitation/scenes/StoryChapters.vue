@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ChapterRecord } from '../../../types/claire'
-defineProps<{ chapters: [ChapterRecord, ChapterRecord, ChapterRecord] }>()
+defineProps<{ chapters: ChapterRecord[] }>()
 </script>
 <template>
   <section class="story-chapters" aria-label="Our love story">

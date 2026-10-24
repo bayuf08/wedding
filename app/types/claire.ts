@@ -40,7 +40,7 @@ export interface ClaireContent {
   hero: { posterId: string; foregroundId?: string; videoSrc: string | null; audioSrc: string | null; occasion: string; names: string; dateLabel: string; scripture: string; attribution: string }
   quote: { text: string; imageIds: [string, string, string] }
   profiles: [ProfileRecord, ProfileRecord]
-  story: { caption: string; imageIds: string[]; chapters: [ChapterRecord, ChapterRecord, ChapterRecord] }
+  story: { caption: string; imageIds: string[]; chapters: ChapterRecord[] }
   celebration: { imageId: string; ribbon: string; calendar: CalendarRecord | null }
   events: { label: string; weekday: string; dateLabel: string; rows: ScheduleRow[] }
   gift: { introduction: string; imageId: string; banks: BankRecord[] }

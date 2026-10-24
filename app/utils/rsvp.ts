@@ -13,3 +13,11 @@ export function validateRsvpDraft(draft: RsvpDraft): RsvpErrors {
   if (codePointLength(draft.note || '') > 500) errors.note = 'message_too_long'
   return errors
 }
+
+export function createWeddingRsvpDraft(eventId: RsvpDraft['eventId']): RsvpDraft {
+  return { attendance: 'ATTENDING', eventId }
+}
+export function normalizeRsvpSubmission(draft: RsvpDraft): RsvpDraft {
+  if (draft.attendance === 'NOT_ATTENDING') return { attendance: draft.attendance, note: draft.note }
+  return { ...draft }
+}

@@ -1,0 +1,1124 @@
+{
+  "cover": {
+    "id": "cover",
+    "src": "/images/claire/dexter-hualin-00146-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Bayu and Hilwa beside a lake and mountains",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00146-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "52% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/01/dexter-hualin-00146-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "hero-kv": {
+    "id": "hero-kv",
+    "src": "/images/kv.png",
+    "mobileSrc": "/images/kv-mobile.png",
+    "mobileWidth": 941,
+    "mobileHeight": 1672,
+    "width": 1672,
+    "height": 941,
+    "alt": "Bayu and Hilwa",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "hero-kv-foreground": {
+    "id": "hero-kv-foreground",
+    "src": "/images/kv-transparent.png",
+    "mobileSrc": "/images/kv-mobile-transparent.png",
+    "mobileWidth": 941,
+    "mobileHeight": 1672,
+    "width": 1672,
+    "height": 941,
+    "alt": "",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "loader": {
+    "id": "loader",
+    "src": "/images/claire/dexter-hualin-00197-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Travel photographs of Bayu and Hilwa",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00197-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/01/dexter-hualin-00197-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "hero": {
+    "id": "hero",
+    "src": "/images/claire/dexter-hualin-00183-Large.jpeg",
+    "width": 1280,
+    "height": 858,
+    "alt": "Bayu and Hilwa with Mount Fuji behind them",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00183-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00183-Large-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "58% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/01/dexter-hualin-00183-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "quote-a": {
+    "id": "quote-a",
+    "src": "/images/claire/dexter-hualin-00197-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Travel moments in Japan",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00197-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/01/dexter-hualin-00197-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "quote-b": {
+    "id": "quote-b",
+    "src": "/images/claire/dexter-hualin-00206.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "Bayu and Hilwa in a monochrome field",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00206-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00206-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/01/dexter-hualin-00206.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "quote-c": {
+    "id": "quote-c",
+    "src": "/images/claire/dexter-hualin-00195-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Monochrome portraits from their journey",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00195-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00195-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "bride": {
+    "id": "bride",
+    "src": "/images/the-bride.jpg",
+    "width": 3072,
+    "height": 4080,
+    "alt": "Portrait of Hilwa",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "groom": {
+    "id": "groom",
+    "src": "/images/the-groom.jpg",
+    "width": 4096,
+    "height": 2304,
+    "alt": "Portrait of Bayu",
+    "sources": [],
+    "focal": {
+      "desktop": "100% 50%",
+      "phone": "100% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "story-1": {
+    "id": "story-1",
+    "src": "/images/claire/dexter-hualin-00169.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "The couple in an architectural doorway",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00169-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00169-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00169.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "story-2": {
+    "id": "story-2",
+    "src": "/images/claire/dexter-hualin-00192.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "The couple outside a Lawson shop",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00192-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00192-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00192.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "story-3": {
+    "id": "story-3",
+    "src": "/images/claire/dexter-hualin-00168.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "The couple sharing a moment over ice cream",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00168-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00168-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00168-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00168.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "story-4": {
+    "id": "story-4",
+    "src": "/images/claire/dexter-hualin-00164.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "Bayu and Hilwa in a grassy field",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00164-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00164-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00164-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00164.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "story-5": {
+    "id": "story-5",
+    "src": "/images/claire/dexter-hualin-00153-Large.jpeg",
+    "width": 1280,
+    "height": 858,
+    "alt": "The couple together in warm evening light",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00153-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00153-Large-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00153-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "story-6": {
+    "id": "story-6",
+    "src": "/images/claire/dexter-hualin-4975645345rge523.jpg",
+    "width": 1280,
+    "height": 858,
+    "alt": "The couple in a monochrome field",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-4975645345rge523-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-4975645345rge523-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-4975645345rge523.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "celebration": {
+    "id": "celebration",
+    "src": "/images/claire/dexter-hualin-00198.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "Bayu and Hilwa near Mount Fuji",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00198-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00198-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00198.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gift": {
+    "id": "gift",
+    "src": "/images/gift.jpeg",
+    "width": 2134,
+    "height": 3200,
+    "alt": "Bayu and Hilwa",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "mountain": {
+    "id": "mountain",
+    "src": "/images/claire/dexter-hualin-00216-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Mount Fuji under a bright blue sky",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00216-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/01/dexter-hualin-00216-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "feature-poster": {
+    "id": "feature-poster",
+    "src": "/images/claire/dexter-hualin-00168.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "Bayu and Hilwa sharing a quiet moment",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00168-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00168-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00168-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00168.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "menu": {
+    "id": "menu",
+    "src": "/images/claire/dexter-hualin-00153-Large.jpeg",
+    "width": 1280,
+    "height": 858,
+    "alt": "Bayu and Hilwa together",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00153-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00153-Large-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00153-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "closing": {
+    "id": "closing",
+    "src": "/images/footer.jpg",
+    "width": 2304,
+    "height": 4096,
+    "alt": "Bayu and Hilwa",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "adventure-1": {
+    "id": "adventure-1",
+    "src": "/images/adventures/adventure-1.jpg",
+    "width": 3072,
+    "height": 4096,
+    "alt": "Adventure photo 1",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "adventure-2": {
+    "id": "adventure-2",
+    "src": "/images/adventures/adventure-2.png",
+    "width": 1086,
+    "height": 1448,
+    "alt": "Adventure photo 2",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "adventure-3": {
+    "id": "adventure-3",
+    "src": "/images/adventures/adventure-3.jpg",
+    "width": 4096,
+    "height": 2304,
+    "alt": "Adventure photo 3",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "adventure-4": {
+    "id": "adventure-4",
+    "src": "/images/adventures/adventure-4.jpg",
+    "width": 4080,
+    "height": 3072,
+    "alt": "Adventure photo 4",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "adventure-5": {
+    "id": "adventure-5",
+    "src": "/images/adventures/adventure-5.jpg",
+    "width": 4096,
+    "height": 2304,
+    "alt": "Adventure photo 5",
+    "sources": [],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": null,
+      "status": "supplied",
+      "credit": "Supplied by Bayu and Hilwa"
+    }
+  },
+  "gallery-01": {
+    "id": "gallery-01",
+    "src": "/images/claire/dexter-hualin-00203-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Bayu and Hilwa by a blue lake",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00203-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00203-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-02": {
+    "id": "gallery-02",
+    "src": "/images/claire/dexter-hualin-00155.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "The couple beside a train window",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00155-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00155-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00155-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00155.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-03": {
+    "id": "gallery-03",
+    "src": "/images/claire/dexter-hualin-00208.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "Close portrait of the couple",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00208-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00208-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00208-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00208.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-04": {
+    "id": "gallery-04",
+    "src": "/images/claire/dexter-hualin-00207.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "Station and mountains in Japan",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00207-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00207-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00207-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00207.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-05": {
+    "id": "gallery-05",
+    "src": "/images/claire/dexter-hualin-00198.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "The couple near Mount Fuji in monochrome",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00198-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00198-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00198.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-06": {
+    "id": "gallery-06",
+    "src": "/images/claire/dexter-hualin-00192.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "The couple outside a Lawson shop",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00192-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00192-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00192.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-07": {
+    "id": "gallery-07",
+    "src": "/images/claire/dexter-hualin-00169.jpg",
+    "width": 1372,
+    "height": 2048,
+    "alt": "The couple in an architectural doorway",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00169-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00169-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00169.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-08": {
+    "id": "gallery-08",
+    "src": "/images/claire/dexter-hualin-00168.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "The couple enjoying ice cream",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00168-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00168-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00168-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00168.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-09": {
+    "id": "gallery-09",
+    "src": "/images/claire/dexter-hualin-00179.jpg",
+    "width": 1372,
+    "height": 1303,
+    "alt": "The couple beneath diagonal sunlight",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00179-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00179-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00179.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-10": {
+    "id": "gallery-10",
+    "src": "/images/claire/dexter-hualin-00195-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "A monochrome collage of the couple",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00195-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00195-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-11": {
+    "id": "gallery-11",
+    "src": "/images/claire/dexter-hualin-4975645fdfd345rge523.jpg",
+    "width": 2048,
+    "height": 1372,
+    "alt": "Mount Fuji beside a building",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-4975645fdfd345rge523-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-4975645fdfd345rge523-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-4975645fdfd345rge523-1680.webp",
+        "width": 1680,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-4975645fdfd345rge523.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-12": {
+    "id": "gallery-12",
+    "src": "/images/claire/dexter-hualin-4975645345rge523.jpg",
+    "width": 1280,
+    "height": 858,
+    "alt": "The couple in a monochrome field",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-4975645345rge523-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-4975645345rge523-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-4975645345rge523.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-13": {
+    "id": "gallery-13",
+    "src": "/images/claire/dexter-hualin-00145-Large.jpeg",
+    "width": 858,
+    "height": 1280,
+    "alt": "Monochrome portrait of Hilwa",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00145-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": true,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00145-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-14": {
+    "id": "gallery-14",
+    "src": "/images/claire/dexter-hualin-49756523.jpg",
+    "width": 1197,
+    "height": 773,
+    "alt": "The couple facing Mount Fuji by a lake",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-49756523-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-49756523.jpg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-15": {
+    "id": "gallery-15",
+    "src": "/images/claire/dexter-hualin-00182-Largffe.jpeg",
+    "width": 1067,
+    "height": 799,
+    "alt": "The couple together in a field",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00182-Largffe-640.webp",
+        "width": 640,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00182-Largffe.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  },
+  "gallery-16": {
+    "id": "gallery-16",
+    "src": "/images/claire/dexter-hualin-00153-Large.jpeg",
+    "width": 1280,
+    "height": 858,
+    "alt": "The couple in golden evening light",
+    "sources": [
+      {
+        "src": "/images/claire/dexter-hualin-00153-Large-640.webp",
+        "width": 640,
+        "format": "webp"
+      },
+      {
+        "src": "/images/claire/dexter-hualin-00153-Large-1200.webp",
+        "width": 1200,
+        "format": "webp"
+      }
+    ],
+    "focal": {
+      "desktop": "50% 50%",
+      "phone": "50% 50%"
+    },
+    "monochrome": false,
+    "provenance": {
+      "sourceUrl": "https://groovepublic.com/wp-content/uploads/2025/03/dexter-hualin-00153-Large.jpeg",
+      "status": "usable-original",
+      "credit": "Groove Public / Claire reference"
+    }
+  }
+}

@@ -1,72 +1,74 @@
 <script setup lang="ts">
-import { computed, nextTick, reactive, ref } from 'vue'
+import { $fetch } from 'ofetch'
+import { computed, nextTick, reactive, ref, watch } from 'vue'
+import InvitationFormField from '../shared/InvitationFormField.vue'
+import InvitationFormChoices from '../shared/InvitationFormChoices.vue'
+import InvitationFormAction from '../shared/InvitationFormAction.vue'
+import InvitationFormStatus from '../shared/InvitationFormStatus.vue'
+import InvitationFormCompanion from '../shared/InvitationFormCompanion.vue'
 import ResponsivePhoto from '../../ui/ResponsivePhoto.vue'
 import type { ClaireContent, ImageAsset } from '../../../types/claire'
 import type { RsvpDraft, RsvpErrors } from '../../../types/invitation'
-import { codePointLength, validateRsvpDraft } from '../../../utils/rsvp'
-const props = defineProps<{ rsvp: ClaireContent['rsvp']; image: ImageAsset; guestName: string }>()
-const draft = reactive<RsvpDraft>({})
+import { codePointLength, createWeddingRsvpDraft, normalizeRsvpSubmission, validateRsvpDraft } from '../../../utils/rsvp'
+import { createInvitationDelivery } from '../../../utils/invitation-delivery'
+const props = defineProps<{ rsvp: ClaireContent['rsvp']; image: ImageAsset; guestName: string; eventId?: RsvpDraft['eventId']; invitationToken?: string; guestLimit?: number }>()
+const deliver = createInvitationDelivery((url, options) => $fetch(url, options), () => props.invitationToken, 'rsvps')
+const limit = computed(() => props.guestLimit || 2)
+const emit = defineEmits<{ previewSubmit: [payload: RsvpDraft] }>()
+const draft = reactive<RsvpDraft>(createWeddingRsvpDraft(props.eventId))
+const guestCount = ref('')
 const errors = ref<RsvpErrors>({})
 const status = ref('')
+const activeField = ref('RSVP')
 const busy = ref(false)
 const nameLength = computed(() => codePointLength(props.guestName))
 const noteLength = computed(() => codePointLength(draft.note || ''))
 async function submit() {
   if (busy.value) return
   status.value = ''
-  errors.value = validateRsvpDraft(draft)
+  const payload = normalizeRsvpSubmission(draft)
+  errors.value = validateRsvpDraft(payload)
+  if (payload.attendance === 'ATTENDING' && (payload.attendanceCount || 0) > limit.value) errors.value.attendanceCount = 'attending_count_invalid'
   const firstError = Object.keys(errors.value)[0]
   if (firstError) { await nextTick(); document.getElementById(`rsvp-${firstError}`)?.focus(); return }
+  emit('previewSubmit', payload)
   busy.value = true; status.value = ''
-  setTimeout(() => { busy.value = false; status.value = 'Your response is saved for this preview.' }, 240)
+  try { if (!props.invitationToken) await new Promise(resolve => setTimeout(resolve, 240)); status.value = await deliver(payload as Record<string, unknown>) ? 'Your RSVP has been saved. Thank you.' : 'RSVP details checked on this page. Nothing has been sent or saved.' }
+  catch (error) { status.value = error instanceof Error && error.message.startsWith('A previous') ? error.message : 'Unable to confirm delivery. Retry the same details.' }
+  finally { busy.value = false }
 }
+function setAttendance(value: string | number) {
+  if (value === 'ATTENDING' || value === 'NOT_ATTENDING') draft.attendance = value
+}
+function setGuestCount(value: string) {
+  guestCount.value = value
+  draft.attendanceCount = value.trim() ? Number(value) : undefined
+  if (errors.value.attendanceCount) errors.value = validateRsvpDraft(normalizeRsvpSubmission(draft))
+}
+watch(() => draft.attendance, attendance => {
+  status.value = ''
+  const { attendanceCount, eventId, ...otherErrors } = errors.value
+  errors.value = attendance === 'NOT_ATTENDING' ? otherErrors : { ...otherErrors, ...validateRsvpDraft(draft) }
+})
+watch(() => props.eventId, eventId => { draft.eventId = eventId })
 </script>
 <template>
   <section id="rsvp" class="rsvp-section" tabindex="-1" aria-labelledby="rsvp-title">
     <div class="scene-container rsvp-layout">
-      <div class="rsvp-image motion-entry"><ResponsivePhoto :asset="image" sizes="(max-width: 767px) 100vw, 427px" /></div>
+      <div class="rsvp-visual-column">
+        <div class="rsvp-image motion-entry"><ResponsivePhoto :asset="image" sizes="(max-width: 767px) 100vw, 427px" /></div>
+        <InvitationFormCompanion :text="activeField" />
+      </div>
       <div class="rsvp-column">
         <h2 id="rsvp-title" class="rsvp-intro claire-body">{{ rsvp.introduction }}</h2>
         <form class="rsvp-form invitation-form" novalidate :aria-busy="busy" aria-labelledby="rsvp-title" @submit.prevent="submit">
-          <div class="invitation-field">
-            <label class="invitation-label" for="rsvp-name"><span class="field-number" aria-hidden="true">01</span> Full Name <span class="field-detail">{{ nameLength }}/100</span></label>
-            <input id="rsvp-name" :value="guestName" readonly aria-readonly="true" aria-describedby="rsvp-name-help">
-            <p id="rsvp-name-help" class="field-help">This name is taken from your invitation link and cannot be changed.</p>
-          </div>
-          <fieldset class="invitation-field" :aria-describedby="errors.attendance ? 'rsvp-attendance-error' : undefined">
-            <legend class="invitation-label"><span class="field-number" aria-hidden="true">02</span> Attendance Status <span class="field-detail">Required</span></legend>
-            <div class="form-choices">
-              <label class="form-choice"><input id="rsvp-attendance" v-model="draft.attendance" type="radio" name="attendance" value="ATTENDING" required :aria-invalid="Boolean(errors.attendance)" :aria-describedby="errors.attendance ? 'rsvp-attendance-error' : undefined"><span><i class="choice-check" aria-hidden="true">✓</i>Attending</span></label>
-              <label class="form-choice"><input v-model="draft.attendance" type="radio" name="attendance" value="NOT_ATTENDING" required :aria-invalid="Boolean(errors.attendance)" :aria-describedby="errors.attendance ? 'rsvp-attendance-error' : undefined"><span><i class="choice-check" aria-hidden="true">✓</i>Not Attending</span></label>
-            </div>
-            <p v-if="errors.attendance" id="rsvp-attendance-error" class="field-error" role="alert">Please select your attendance status.</p>
-          </fieldset>
-          <template v-if="draft.attendance === 'ATTENDING'">
-            <fieldset class="invitation-field" :aria-describedby="errors.eventId ? 'rsvp-eventId-error' : undefined">
-              <legend class="invitation-label"><span class="field-number" aria-hidden="true">03</span> Select Event <span class="field-detail">Required</span></legend>
-              <div class="form-choices">
-                <label class="form-choice"><input id="rsvp-eventId" v-model="draft.eventId" type="radio" name="event" value="matrimony" required :aria-invalid="Boolean(errors.eventId)" :aria-describedby="errors.eventId ? 'rsvp-eventId-error' : undefined"><span><i class="choice-check" aria-hidden="true">✓</i>Akad Nikah</span></label>
-                <label class="form-choice"><input v-model="draft.eventId" type="radio" name="event" value="reception" required :aria-invalid="Boolean(errors.eventId)" :aria-describedby="errors.eventId ? 'rsvp-eventId-error' : undefined"><span><i class="choice-check" aria-hidden="true">✓</i>Resepsi</span></label>
-              </div>
-              <p v-if="errors.eventId" id="rsvp-eventId-error" class="field-error" role="alert">Please select an event.</p>
-            </fieldset>
-            <fieldset class="invitation-field" :aria-describedby="errors.attendanceCount ? 'rsvp-attendanceCount-error' : undefined">
-              <legend class="invitation-label"><span class="field-number" aria-hidden="true">04</span> Number of Guests <span class="field-detail">Required</span></legend>
-              <div class="form-choices">
-                <label class="form-choice"><input id="rsvp-attendanceCount" v-model="draft.attendanceCount" type="radio" name="guests" :value="1" required :aria-invalid="Boolean(errors.attendanceCount)" :aria-describedby="errors.attendanceCount ? 'rsvp-attendanceCount-error' : undefined"><span><i class="choice-check" aria-hidden="true">✓</i>1 guest</span></label>
-                <label class="form-choice"><input v-model="draft.attendanceCount" type="radio" name="guests" :value="2" required :aria-invalid="Boolean(errors.attendanceCount)" :aria-describedby="errors.attendanceCount ? 'rsvp-attendanceCount-error' : undefined"><span><i class="choice-check" aria-hidden="true">✓</i>2 guests</span></label>
-              </div>
-              <p v-if="errors.attendanceCount" id="rsvp-attendanceCount-error" class="field-error" role="alert">Please choose one or two guests.</p>
-            </fieldset>
-          </template>
-          <div class="invitation-field">
-            <label class="invitation-label" for="rsvp-note"><span class="field-number" aria-hidden="true">{{ draft.attendance === 'ATTENDING' ? '05' : '03' }}</span> Wishes/Message <span class="field-detail">Optional</span></label>
-            <textarea id="rsvp-note" v-model="draft.note" placeholder="Write your wishes or message..." :aria-invalid="Boolean(errors.note)" :aria-describedby="errors.note ? 'rsvp-note-error rsvp-note-help' : 'rsvp-note-help'" />
-            <p id="rsvp-note-help" class="field-help">{{ noteLength }}/500 characters</p>
-            <p v-if="errors.note" id="rsvp-note-error" class="field-error" role="alert">Please keep your message under 500 characters.</p>
-          </div>
-          <button type="submit" class="form-submit" :disabled="busy">{{ busy ? 'Saving…' : 'Send Confirmation' }}</button>
-          <p class="form-status" role="status">{{ status }}</p>
+          <InvitationFormField id="rsvp-name" number="01" label="Full Name" :model-value="guestName" readonly :detail="`${nameLength}/100`" help="This name is taken from your invitation link and cannot be changed." @activate="activeField = $event" />
+          <InvitationFormChoices id="rsvp-attendance" :model-value="draft.attendance" number="02" label="Attendance Status" name="attendance" required :options="[{ value: 'ATTENDING', label: 'Attending' }, { value: 'NOT_ATTENDING', label: 'Not Attending' }]" :error="errors.attendance ? 'Please select your attendance status.' : undefined" @update:model-value="setAttendance" @activate="activeField = $event" />
+          <InvitationFormField v-if="draft.attendance === 'ATTENDING'" id="rsvp-attendanceCount" :model-value="guestCount" number="03" label="Number of Attendance" type="number" min="1" :max="String(limit)" step="1" required placeholder="Enter number of attendees" :help="`Enter a whole number from 1 to ${limit}.`" :error="errors.attendanceCount ? `Please enter a whole number from 1 to ${limit}.` : undefined" @update:model-value="setGuestCount" @activate="activeField = $event" />
+          <InvitationFormField id="rsvp-note" v-model="draft.note" :number="draft.attendance === 'ATTENDING' ? '04' : '03'" label="Wishes/Message" type="textarea" detail="Optional" placeholder="Write your wishes or message..." :help="`${noteLength}/500 characters`" :error="errors.note ? 'Please keep your message under 500 characters.' : undefined" @activate="activeField = $event" />
+          <p v-if="!eventId" class="field-error" role="alert">Attendance confirmation is unavailable because no event is configured.</p>
+          <InvitationFormAction :label="invitationToken ? 'Send RSVP' : 'Review RSVP'" :busy="busy" :disabled="!eventId" />
+          <InvitationFormStatus :message="status" />
         </form>
       </div>
     </div>

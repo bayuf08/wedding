@@ -28,7 +28,7 @@ import NavigationDialog from './overlays/NavigationDialog.vue'
 import GiftDialog from './overlays/GiftDialog.vue'
 import GalleryLightbox from './overlays/GalleryLightbox.vue'
 
-const props = withDefaults(defineProps<{ invitation: InvitationViewModel; guestName?: string }>(), { guestName: 'Guest Name' })
+const props = withDefaults(defineProps<{ invitation: InvitationViewModel; guestName?: string; invitationToken?: string; guestLimit?: number }>(), { guestName: 'Guest Name' })
 const content = computed(() => props.invitation.content)
 const image = (id: string): ImageAsset => {
   const result = mediaManifest[id]
@@ -63,7 +63,7 @@ function changePhoto(index: number) { if (overlay.value.kind === 'lightbox') ove
       <CelebrationSection :celebration="content.celebration" :image="image(content.celebration.imageId)" />
       <EventDetails :events="content.events" />
       <GiftIntroduction :gift="content.gift" :image="image(content.gift.imageId)" @open="showGift" />
-      <RsvpSection :rsvp="content.rsvp" :image="image(content.rsvp.imageId)" :guest-name="guestName" />
+      <RsvpSection :invitation-token="invitationToken" :guest-limit="guestLimit" :event-id="content.events.rows[0]?.id" :rsvp="content.rsvp" :image="image(content.rsvp.imageId)" :guest-name="guestName" />
       <WishesSection :wishes="content.rsvp.wishes" :page-size="content.rsvp.pageSize" />
       <VideoFeature :video="content.video" :poster="image(content.video.posterId)" />
       <GallerySection :heading="content.gallery.heading" :images="galleryImages" @open="showImage" />
@@ -73,7 +73,7 @@ function changePhoto(index: number) { if (overlay.value.kind === 'lightbox') ove
     <OpeningCover v-if="opening !== 'open'" :cover="content.cover" :image="image(content.cover.imageId)" :guest-name="guestName" :opening="opening === 'opening'" @open="openInvitation" />
     <InvitationLoader v-if="opening === 'loading'" :image="image('loader')" :progress="progress" />
     <NavigationDialog :open="overlay.kind === 'navigation'" :image="image(content.navigationImageId)" @close="closeOverlay" @navigate="navigateTo" />
-    <GiftDialog :open="overlay.kind === 'gift'" :banks="content.gift.banks" :guest-name="guestName" @close="closeOverlay" />
+    <GiftDialog :invitation-token="invitationToken" :open="overlay.kind === 'gift'" :banks="content.gift.banks" :guest-name="guestName" @close="closeOverlay" />
     <GalleryLightbox :open="overlay.kind === 'lightbox'" :images="galleryImages" :index="overlay.kind === 'lightbox' ? overlay.index : 0" @close="closeOverlay" @change="changePhoto" />
   </div>
 </template>
