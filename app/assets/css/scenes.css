@@ -92,7 +92,7 @@
 .countdown-pair > span { font-size: 107px; line-height: 1; }
 .countdown-pair small { font: 300 37px/1 'Inter', sans-serif; }
 .calendar-action { width: 138px; flex: none; text-align: center; }
-.calendar-button { width: 138px; height: 138px; border: 1px solid #c2c2c2; border-radius: 50%; color: #c2c2c2; background: transparent; font: 300 15px/18px 'Inter', sans-serif; }
+.calendar-button { display: grid; place-items: center; text-align: center; text-decoration: none; width: 138px; height: 138px; border: 1px solid #c2c2c2; border-radius: 50%; color: #c2c2c2; background: transparent; font: 300 15px/18px 'Inter', sans-serif; }
 .calendar-action p { width: 220px; margin: 12px 0 0 -41px; font-size: 12px; line-height: 1.4; }
 .event-details, .gift-introduction { color: #202020; background: #e9e9e9; }
 .event-details { padding: 120px 0; }

@@ -16,7 +16,6 @@ const deliver = createInvitationDelivery((url, options) => $fetch(url, options),
 const limit = computed(() => props.guestLimit || 2)
 const emit = defineEmits<{ previewSubmit: [payload: RsvpDraft] }>()
 const draft = reactive<RsvpDraft>(createWeddingRsvpDraft(props.eventId))
-const guestCount = ref('')
 const errors = ref<RsvpErrors>({})
 const status = ref('')
 const activeField = ref('RSVP')
@@ -40,9 +39,8 @@ async function submit() {
 function setAttendance(value: string | number) {
   if (value === 'ATTENDING' || value === 'NOT_ATTENDING') draft.attendance = value
 }
-function setGuestCount(value: string) {
-  guestCount.value = value
-  draft.attendanceCount = value.trim() ? Number(value) : undefined
+function setGuestCount(value: string | number) {
+  draft.attendanceCount = Number(value)
   if (errors.value.attendanceCount) errors.value = validateRsvpDraft(normalizeRsvpSubmission(draft))
 }
 watch(() => draft.attendance, attendance => {
@@ -64,7 +62,7 @@ watch(() => props.eventId, eventId => { draft.eventId = eventId })
         <form class="rsvp-form invitation-form" novalidate :aria-busy="busy" aria-labelledby="rsvp-title" @submit.prevent="submit">
           <InvitationFormField id="rsvp-name" number="01" label="Full Name" :model-value="guestName" readonly :detail="`${nameLength}/100`" help="This name is taken from your invitation link and cannot be changed." @activate="activeField = $event" />
           <InvitationFormChoices id="rsvp-attendance" :model-value="draft.attendance" number="02" label="Attendance Status" name="attendance" required :options="[{ value: 'ATTENDING', label: 'Attending' }, { value: 'NOT_ATTENDING', label: 'Not Attending' }]" :error="errors.attendance ? 'Please select your attendance status.' : undefined" @update:model-value="setAttendance" @activate="activeField = $event" />
-          <InvitationFormField v-if="draft.attendance === 'ATTENDING'" id="rsvp-attendanceCount" :model-value="guestCount" number="03" label="Number of Attendance" type="number" min="1" :max="String(limit)" step="1" required placeholder="Enter number of attendees" :help="`Enter a whole number from 1 to ${limit}.`" :error="errors.attendanceCount ? `Please enter a whole number from 1 to ${limit}.` : undefined" @update:model-value="setGuestCount" @activate="activeField = $event" />
+          <InvitationFormChoices v-if="draft.attendance === 'ATTENDING'" id="rsvp-attendanceCount" :model-value="draft.attendanceCount" number="03" label="Number of Attendance" name="attendance-count" required :options="Array.from({ length: limit }, (_, i) => ({ value: i + 1, label: String(i + 1) }))" :error="errors.attendanceCount ? `Please choose ${limit === 1 ? '1 attendee' : '1 or 2 attendees'}.` : undefined" @update:model-value="setGuestCount" @activate="activeField = $event" />
           <InvitationFormField id="rsvp-note" v-model="draft.note" :number="draft.attendance === 'ATTENDING' ? '04' : '03'" label="Wishes/Message" type="textarea" detail="Optional" placeholder="Write your wishes or message..." :help="`${noteLength}/500 characters`" :error="errors.note ? 'Please keep your message under 500 characters.' : undefined" @activate="activeField = $event" />
           <p v-if="!eventId" class="field-error" role="alert">Attendance confirmation is unavailable because no event is configured.</p>
           <InvitationFormAction :label="invitationToken ? 'Send RSVP' : 'Review RSVP'" :busy="busy" :disabled="!eventId" />

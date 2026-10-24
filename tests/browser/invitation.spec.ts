@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { invitationFixture } from '../../app/data/invitation.fixture'
+import invitationFixture from '../../app/assets/data/invitation.json' with { type: 'json' }
 const galleryCount = invitationFixture.content.gallery.imageIds.length
 
 test('opens the invitation with the supplied static hero image', async ({ page }) => {
@@ -25,7 +25,7 @@ test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }
   await expect(page.locator('#rsvp')).toBeFocused()
   await page.getByRole('button', { name: 'Review RSVP' }).click()
   await expect(page.locator('#rsvp-attendanceCount-error')).toBeVisible()
-  await page.locator('#rsvp-attendanceCount').fill('2')
+  await page.locator('#rsvp-attendanceCount-1').check()
   await page.getByRole('button', { name: 'Review RSVP' }).click()
   await expect(page.locator('.rsvp-form .form-status')).toContainText('Nothing has been sent or saved')
 
@@ -53,9 +53,21 @@ test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }
   await page.keyboard.press('Escape')
   await expect(firstPhoto).toBeFocused()
 
-  const calendarDownload = page.waitForEvent('download')
-  await page.getByRole('button', { name: 'Add to Calendar' }).click()
-  expect((await calendarDownload).suggestedFilename()).toBe('bayu-hilwa-wedding.ics')
+  const calendar = page.getByRole('link', { name: 'Add to Calendar in Google Calendar (opens in a new tab)' })
+  const calendarUrl = new URL((await calendar.getAttribute('href'))!)
+  expect(calendarUrl.origin + calendarUrl.pathname).toBe('https://calendar.google.com/calendar/render')
+  expect(calendarUrl.searchParams.get('action')).toBe('TEMPLATE')
+  expect(calendarUrl.searchParams.get('ctz')).toBe('Asia/Jakarta')
+  expect(calendarUrl.searchParams.get('dates')).toBe('20261226T010000Z/20261226T030000Z')
+  expect(calendarUrl.searchParams.get('text')).toBe(invitationFixture.content.celebration.calendar!.title)
+  expect(calendarUrl.searchParams.get('location')).toBe(invitationFixture.content.celebration.calendar!.location)
+  expect(calendarUrl.searchParams.get('details')).toBeTruthy()
+  await page.context().route('https://calendar.google.com/**', route => route.fulfill({ status: 200, contentType: 'text/html', body: '<title>Synthetic calendar destination</title>' }))
+  const popupEvent = page.waitForEvent('popup')
+  await calendar.click()
+  const popup = await popupEvent
+  await expect(popup).toHaveURL(calendarUrl.href)
+  await popup.close()
   await page.locator('.video-frame').hover({ position: { x: 110, y: 110 } })
   await expect(page.locator('.video-pointer')).toHaveClass(/is-visible/)
   await page.getByRole('button', { name: 'PLAY', exact: true }).click()

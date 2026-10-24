@@ -51,6 +51,11 @@
 .form-choice input:checked + span .choice-check { display: inline; }
 .invitation-form :is(input, textarea, button):focus-visible, .form-choice input:focus-visible + span { outline: 2px solid var(--form-focus); outline-offset: 4px; }
 .form-choice input:focus-visible { outline: none; }
+.invitation-form .form-field :is(input, textarea):focus-visible { outline: none; }
+.invitation-form .form-field:focus-within .field-rule::after { transform: scaleX(1) scaleY(2); }
+@media (forced-colors: active) {
+  .invitation-form .form-field :is(input, textarea):focus-visible { outline: 2px solid Highlight; outline-offset: 4px; }
+}
 .invitation-form button.form-submit { position: relative; display: inline-flex; align-items: center; justify-content: center; max-width: 100%; min-height: 48px; margin: 4px 0 0; padding: 14px 18px; border: 0; border-radius: 0; color: var(--form-ink); background: transparent; font: 400 11px/1.6 var(--form-mono); text-transform: uppercase; letter-spacing: .06em; }
 .action-corner { position: absolute; width: 6px; height: 6px; border-color: currentColor; border-style: solid; transition: transform 220ms var(--form-ease); }
 .action-corner--tl { top: 0; left: 0; border-width: 1px 0 0 1px; }

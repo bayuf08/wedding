@@ -21,3 +21,11 @@ export function makeCalendar(event: CalendarRecord | null): CalendarResult {
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Claire Preview//EN', 'BEGIN:VEVENT', `UID:${esc(event.uid)}`, `DTSTAMP:${utc(new Date())}`, `DTSTART:${utc(start)}`, `DTEND:${utc(end)}`, `SUMMARY:${esc(event.title)}`, `LOCATION:${esc(event.location)}`, 'END:VEVENT', 'END:VCALENDAR']
   return { kind: 'available', content: lines.map(fold).join('\r\n') + '\r\n' }
 }
+
+export function googleCalendarUrl(event: CalendarRecord | null): string | null {
+  if (makeCalendar(event).kind !== 'available' || !event) return null
+  const params = new URLSearchParams({ action: 'TEMPLATE', text: event.title,
+    dates: `${utc(new Date(event.startsAt))}/${utc(new Date(event.endsAt))}`,
+    ctz: 'Asia/Jakarta', location: event.location, details: event.description || event.title })
+  return `https://calendar.google.com/calendar/render?${params}`
+}

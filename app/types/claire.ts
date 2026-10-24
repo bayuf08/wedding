@@ -34,7 +34,7 @@ export interface ScheduleRow {
 }
 export interface BankRecord { id: string; bank: string; holder: string; account: string }
 export interface WishRecord { id: string; name: string; dateLabel: string; message: string }
-export interface CalendarRecord { uid: string; title: string; startsAt: string; endsAt: string; location: string }
+export interface CalendarRecord { uid: string; title: string; startsAt: string; endsAt: string; location: string; description?: string }
 export interface ClaireContent {
   cover: { imageId: string; eyebrow: string; names: string; dateLabel: string; apology: string }
   hero: { posterId: string; foregroundId?: string; videoSrc: string | null; audioSrc: string | null; occasion: string; names: string; dateLabel: string; scripture: string; attribution: string }

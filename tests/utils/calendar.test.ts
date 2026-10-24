@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { makeCalendar } from '../../app/utils/calendar'
+import { googleCalendarUrl, makeCalendar } from '../../app/utils/calendar'
 
 const event = {
   uid: 'bayu-hilwa-preview',
@@ -39,5 +39,17 @@ describe('calendar serialization', () => {
       expect(new TextEncoder().encode(line).length).toBeLessThanOrEqual(75)
     }
     expect(result.content.replace(/\r\n /g, '')).toContain(`SUMMARY:${title}`)
+  })
+})
+
+describe('Google Calendar template', () => {
+  it('encodes canonical title, venue and description and displays the UTC event in Jakarta', () => {
+    const details = 'Akad & reception?\nPlease review and save.'
+    const url = new URL(googleCalendarUrl({ ...event, description: details })!)
+    expect(url.origin + url.pathname).toBe('https://calendar.google.com/calendar/render')
+    expect(Object.fromEntries(url.searchParams)).toEqual({ action: 'TEMPLATE', text: event.title, dates: '20260820T010000Z/20260820T030000Z', ctz: 'Asia/Jakarta', location: event.location, details })
+    expect(googleCalendarUrl(null)).toBeNull()
+    expect(googleCalendarUrl({ ...event, startsAt: 'invalid' })).toBeNull()
+    expect(new URL(googleCalendarUrl(event)!).searchParams.get('details')).toBe(event.title)
   })
 })
