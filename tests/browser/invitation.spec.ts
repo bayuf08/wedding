@@ -33,7 +33,9 @@ test('keeps RSVP, gift, wishes, and gallery interactions local', async ({ page }
   await page.getByRole('button', { name: 'Next »' }).click()
   await expect(page.locator('#wishes-title').locator('..')).toContainText('Page 2 of 2')
 
-  await page.getByRole('button', { name: 'Click Here' }).click()
+  await expect(page.locator('#gift .bank-number')).toHaveCount(3)
+  await expect(page.locator('#gift .bank-number').first()).toBeVisible()
+  await page.getByRole('button', { name: 'Confirm Gift', exact: true }).click()
   await expect(page.getByRole('dialog', { name: 'Wedding gift' })).toBeVisible()
   await page.getByRole('button', { name: 'SEND', exact: true }).click()
   await expect(page.locator('.gift-form-panel .field-error')).toHaveCount(3)
@@ -102,4 +104,43 @@ test('reverses the portrait aperture and settles it for reduced motion', async (
   await expect.poll(() => portrait.locator('img').evaluate(element => (element as HTMLElement).style.transform)).toBe('')
   await page.goto('/invite/demo?to=Guest+Name')
   await expect(page.getByRole('button', { name: "Let's Open" })).toBeVisible({ timeout: 1_500 })
+})
+
+test('shows gift accounts immediately and supports copying on desktop and mobile', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {
+      writeText: async (value: string) => { (window as any).__copiedGiftAccount = value },
+    } })
+  })
+  for (const width of [1680, 390, 320]) {
+    await page.setViewportSize({ width, height: 939 })
+    await page.goto('/invite/demo?to=Guest+Name')
+    await page.getByRole('button', { name: "Let's Open" }).click()
+    await expect(page.locator('.opening-cover')).toHaveCount(0)
+    await expect(page.locator('main')).not.toHaveAttribute('inert')
+    const gift = page.locator('#gift')
+    await gift.scrollIntoViewIfNeeded()
+    await expect(gift.locator('.bank-number')).toHaveCount(3)
+    await expect(page.getByRole('dialog', { name: 'Wedding gift' })).toHaveCount(0)
+    const copyButton = gift.getByRole('button', { name: /Copy .* account number/ }).first()
+    await copyButton.focus()
+    await page.keyboard.press('Enter')
+    await expect(gift.getByRole('status')).toHaveText('Copied')
+    expect(await page.evaluate(() => (window as any).__copiedGiftAccount === document.querySelector('#gift .bank-number')?.textContent)).toBe(true)
+    expect(await gift.evaluate(element => [...element.querySelectorAll('.bank-row')].every(row => {
+      const bounds = row.getBoundingClientRect()
+      return bounds.left >= 0 && bounds.right <= window.innerWidth && row.scrollWidth <= row.clientWidth
+    }))).toBe(true)
+    await page.evaluate(() => { navigator.clipboard.writeText = async () => { throw new Error('Unavailable') } })
+    await copyButton.click()
+    await expect(gift.getByRole('status')).toContainText('Select the account number')
+    await gift.getByRole('button', { name: 'Confirm Gift', exact: true }).click()
+    await expect(page.getByRole('dialog', { name: 'Wedding gift' })).toBeVisible()
+    await page.keyboard.press('Escape')
+    await expect(gift.getByRole('button', { name: 'Confirm Gift', exact: true })).toBeFocused()
+    if (width !== 320) {
+      await gift.screenshot({ path: `/tmp/wedding-gift-${width}.png`, mask: [gift.locator('.bank-number')] })
+    }
+  }
 })
