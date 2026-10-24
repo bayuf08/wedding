@@ -6,7 +6,8 @@ export function useInvitationExperience(galleryCount: number) {
   const opening = ref<OpeningState>('loading')
   const progress = ref(0)
   const overlay = ref<OverlayState>({ kind: 'none' })
-  const locked = computed(() => opening.value !== 'open' || overlay.value.kind !== 'none')
+  const navigationPresent = ref(false)
+  const locked = computed(() => opening.value !== 'open' || overlay.value.kind !== 'none' || navigationPresent.value)
   useDocumentLock(locked)
   let progressTimer: ReturnType<typeof setInterval> | undefined
   let holdTimer: ReturnType<typeof setTimeout> | undefined
@@ -43,5 +44,5 @@ export function useInvitationExperience(galleryCount: number) {
     closeOverlay(); await nextTick()
     requestAnimationFrame(() => { const target = document.getElementById(id); target?.scrollIntoView({ behavior: 'smooth', block: 'start' }); target?.focus({ preventScroll: true }) })
   }
-  return { opening, progress, overlay, locked, openInvitation, showNavigation, showGift, showImage, closeOverlay, navigateTo }
+  return { opening, progress, overlay, navigationPresent, locked, openInvitation, showNavigation, showGift, showImage, closeOverlay, navigateTo }
 }

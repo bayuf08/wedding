@@ -40,9 +40,9 @@ const quoteImages = computed(() => content.value.quote.imageIds.map(image) as [I
 const profileImages = computed(() => content.value.profiles.map(profile => image(profile.imageId)) as [ImageAsset, ImageAsset])
 const storyImages = computed(() => content.value.story.imageIds.map(image))
 const experience = useInvitationExperience(content.value.gallery.imageIds.length)
-const { opening, progress, overlay, openInvitation, showNavigation, showGift, showImage, closeOverlay, navigateTo } = experience
+const { opening, progress, overlay, navigationPresent, openInvitation, showNavigation, showGift, showImage, closeOverlay, navigateTo } = experience
 const { systemReduced, manualPaused, motionAllowed } = useMotionPreference()
-const sceneMotionAllowed = computed(() => motionAllowed.value && opening.value === 'open' && overlay.value.kind === 'none')
+const sceneMotionAllowed = computed(() => motionAllowed.value && opening.value === 'open' && overlay.value.kind === 'none' && !navigationPresent.value)
 const root = ref<HTMLElement | null>(null)
 const enhanced = ref(false)
 onMounted(() => { enhanced.value = true })
@@ -69,10 +69,10 @@ function changePhoto(index: number) { if (overlay.value.kind === 'lightbox') ove
       <GallerySection :heading="content.gallery.heading" :images="galleryImages" @open="showImage" />
       <ClosingSection :closing="content.closing" :image="image(content.closing.imageId)" />
     </main>
-    <InvitationControls v-if="opening === 'open'" :paused="manualPaused || systemReduced" :media-available="Boolean(content.hero.videoSrc || content.hero.audioSrc)" @menu="showNavigation" @pause="manualPaused = !manualPaused" />
+    <InvitationControls v-if="opening === 'open'" :paused="manualPaused || systemReduced" :menu-open="overlay.kind === 'navigation' || navigationPresent" :media-available="Boolean(content.hero.videoSrc || content.hero.audioSrc)" @menu="showNavigation" @pause="manualPaused = !manualPaused" />
     <OpeningCover v-if="opening !== 'open'" :cover="content.cover" :image="image(content.cover.imageId)" :guest-name="guestName" :opening="opening === 'opening'" @open="openInvitation" />
     <InvitationLoader v-if="opening === 'loading'" :image="image('loader')" :progress="progress" />
-    <NavigationDialog :open="overlay.kind === 'navigation'" :image="image(content.navigationImageId)" @close="closeOverlay" @navigate="navigateTo" />
+    <NavigationDialog :open="overlay.kind === 'navigation'" :motion-enabled="motionAllowed" :image="image(content.navigationImageId)" @presence="navigationPresent = $event" @close="closeOverlay" @navigate="navigateTo" />
     <GiftDialog :invitation-token="invitationToken" :open="overlay.kind === 'gift'" :banks="content.gift.banks" :guest-name="guestName" @close="closeOverlay" />
     <GalleryLightbox :open="overlay.kind === 'lightbox'" :images="galleryImages" :index="overlay.kind === 'lightbox' ? overlay.index : 0" @close="closeOverlay" @change="changePhoto" />
   </div>
