@@ -13,7 +13,7 @@ const { phase, intendedOpen } = menu
 const links = [ ['Home', 'welcome'], ['Profile', 'profile'], ['Love Story', 'story'], ['Wedding Event', 'details'], ['RSVP', 'rsvp'], ['Wedding Gift', 'gift'], ['Gallery', 'gallery'] ]
 </script>
 <template>
-  <dialog id="wedding-navigation" ref="element" class="invitation-dialog invitation-dialog--light navigation-dialog" aria-label="Invitation navigation" :data-phase="phase" @cancel.prevent="menu.close" @close="menu.nativeClosed" @pointerdown="menu.pointerDown" @click="menu.click" @focusin="menu.focusIn">
+  <dialog id="wedding-navigation" ref="element" class="invitation-dialog invitation-dialog--light navigation-dialog" aria-label="Invitation navigation" :data-phase="phase" @cancel.prevent="menu.close" @close="menu.nativeClosed" @pointerdown="menu.pointerDown" @click="menu.click" @focusin="menu.focusIn" @keydown="menu.keyDown">
     <div class="dialog-content">
       <NavigationCurtain />
       <button type="button" class="dialog-close navigation-toggle" data-dialog-initial data-menu-toggle :aria-label="intendedOpen ? 'Close navigation' : 'Open navigation'" :aria-expanded="intendedOpen" aria-controls="wedding-navigation" @click="menu.toggle"><InvitationBurgerIcon :open="intendedOpen" :animated="motionEnabled" /></button>

@@ -105,6 +105,15 @@ export function useNavigationMenu(
   function focusIn(event: FocusEvent) {
     if (phase.value === 'opening' && event.target instanceof Element && event.target.closest('nav')) settle(true, ++generation)
   }
+  function keyDown(event: KeyboardEvent) {
+    const root = dialog.value
+    if (event.key !== 'Tab' || !root?.open) return
+    const controls = [...root.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+    const first = controls[0], last = controls.at(-1)
+    if (!first || !last) return
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+  }
   function preferenceChanged() { if (phase.value !== 'closed' && (!props.motionEnabled || preference?.matches)) settle(intendedOpen.value, ++generation) }
   watch(() => props.open, value => { if (value || phase.value !== 'closed') void transition(value) }, { flush: 'post', immediate: true })
   watch(() => props.motionEnabled, preferenceChanged)
@@ -117,5 +126,5 @@ export function useNavigationMenu(
     ++generation; cancelAndFreeze(); preference?.removeEventListener('change', preferenceChanged)
     phase.value = 'closed'; dialog.value?.close(); events.presence(false)
   })
-  return { phase, intendedOpen, close, toggle, navigate, pointerDown, click, nativeClosed, focusIn }
+  return { phase, intendedOpen, close, toggle, navigate, pointerDown, click, nativeClosed, focusIn, keyDown }
 }

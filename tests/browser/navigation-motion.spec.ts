@@ -121,6 +121,10 @@ test('native focus containment, keyboard entry and guarded outside dismissal', a
   await page.locator('.menu-toggle').press('Enter')
   const menu = page.locator('#wedding-navigation')
   await expect(menu.locator('[data-menu-toggle]')).toBeFocused()
+  await page.keyboard.press('Shift+Tab')
+  await expect(menu.getByRole('button', { name: 'Gallery', exact: true })).toBeFocused()
+  await page.keyboard.press('Tab')
+  await expect(menu.locator('[data-menu-toggle]')).toBeFocused()
   await page.keyboard.press('Tab')
   await expect(menu).toHaveAttribute('data-phase', 'open')
   for (let index = 0; index < 12; index++) {

@@ -71,3 +71,7 @@ Evidence directory: /Users/bayu/Documents/Codex/2026-10-24/task-2/wedding-naviga
 ## Subsequent publication authorization
 
 The user subsequently authorized commit, push and deployment of this completed navigation work. The earlier local-only restriction describes the implementation phase and is superseded for the scoped navigation source, three plans and two tests. Final source/test bytes were checked against the verified working copy: unchanged since 89 unit tests, typecheck/build, 17 browser cases and the six-case final navigation rerun passed. Approved content/media hashes remain unchanged. Unrelated local CLI package/lockfile changes remain excluded. Publication uses an export of the final commit, not the dirty working tree.
+
+## Production keyboard edge verification
+
+Production read-only QA of initial navigation release 6cd5336 found that Shift+Tab from the first modal control could move focus into browser chrome despite native modal containment. Added explicit Tab/Shift+Tab wrapping between first and last menu controls; Enter/Space/Escape and ordinary middle-control navigation remain unchanged. Added unit and real-browser edge regressions. The follow-up snapshot passed all 90 unit tests, typecheck/build and all six navigation browser cases, including seven destinations, intermediate frames, reversal and exact scroll restoration. No unrelated dependencies, content, credentials, backend configuration or submission behavior changed.

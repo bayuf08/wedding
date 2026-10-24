@@ -34,6 +34,17 @@ afterEach(() => {
 const image = mediaManifest.navigation || mediaManifest.mountain!
 async function finishAll() { animations.forEach(animation => animation.finish()); await flushPromises() }
 describe('interruptible native navigation lifecycle', () => {
+  it('wraps keyboard focus at both menu edges instead of entering browser chrome', async () => {
+    const wrapper = mount(NavigationDialog, { attachTo: document.body, props: { open: true, image, motionEnabled: false } })
+    await flushPromises()
+    const first = wrapper.get<HTMLButtonElement>('[data-menu-toggle]'), last = wrapper.findAll<HTMLButtonElement>('nav button').at(-1)!
+    first.element.focus()
+    await first.trigger('keydown', { key: 'Tab', shiftKey: true })
+    expect(document.activeElement).toBe(last.element)
+    await last.trigger('keydown', { key: 'Tab' })
+    expect(document.activeElement).toBe(first.element)
+    wrapper.unmount()
+  })
   it('keeps zero-scale curtain interpolation continuous instead of a singular matrix jump', async () => {
     const original = getComputedStyle
     vi.stubGlobal('getComputedStyle', (element: Element) => element.hasAttribute('data-menu-curtain') ? { transform: 'matrix(1, 0, 0, 0, 0, 844)', opacity: '1' } : original(element))
