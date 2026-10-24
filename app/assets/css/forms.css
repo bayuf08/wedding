@@ -1,0 +1,71 @@
+.invitation-form {
+  --form-ink: #e9e7e4;
+  --form-muted: #b1aaa4;
+  --form-line: #81766d;
+  --form-choice: #201e1c;
+  --form-selected: #e9e7e4;
+  --form-selected-ink: #26211e;
+  --form-focus: #d8bba3;
+  --form-error: #f5b5ae;
+  color: var(--form-ink);
+  font: 400 14px/1.5 'Inter', Arial, sans-serif;
+}
+.invitation-form--light {
+  --form-ink: #26211e;
+  --form-muted: #665a51;
+  --form-line: #857469;
+  --form-choice: #e3ded9;
+  --form-selected: #26211e;
+  --form-selected-ink: #f0eeeb;
+  --form-focus: #70533d;
+  --form-error: #a23b32;
+}
+.invitation-form .invitation-field { min-width: 0; margin: 0 0 32px; padding: 0; border: 0; }
+.invitation-form .invitation-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; width: 100%; margin: 0 0 12px; padding: 0; color: var(--form-ink); font-size: 12px; line-height: 1.6; }
+.field-number { min-width: 20px; color: var(--form-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.field-detail { margin-left: auto; color: var(--form-muted); font-size: 11px; }
+.invitation-form input:not([type='radio']), .invitation-form select, .invitation-form textarea {
+  display: block; width: 100%; min-width: 0; min-height: 48px; padding: 0 0 12px;
+  border: 0; border-bottom: 1px solid var(--form-line); border-radius: 0;
+  color: var(--form-ink); background: transparent; font: 400 clamp(20px, 2vw, 28px)/1.35 'Inter', Arial, sans-serif;
+  transition: border-color 160ms ease;
+}
+.invitation-form select { padding-right: 20px; font-size: clamp(16px, 1.4vw, 20px); }
+.invitation-form select option { color: #26211e; background: #f0eeeb; }
+.invitation-form textarea { min-height: 120px; resize: vertical; font-size: clamp(18px, 1.6vw, 22px); }
+.invitation-form input::placeholder, .invitation-form textarea::placeholder { color: var(--form-muted); opacity: 1; }
+.invitation-form input[readonly] { color: var(--form-muted); }
+.invitation-form .field-help { margin: 8px 0 0; color: var(--form-muted); font-size: 12px; line-height: 1.6; }
+.invitation-form .field-error { color: var(--form-error); font-size: 13px; }
+.invitation-form [aria-invalid='true']:not([type='radio']) { border-color: var(--form-error); }
+.form-choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.form-choice { position: relative; display: inline-flex; max-width: 100%; cursor: pointer; }
+.form-choice input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; }
+.form-choice > span { display: flex; align-items: center; justify-content: center; min-width: 56px; min-height: 48px; padding: 12px 18px; border: 1px solid var(--form-line); color: var(--form-ink); background: var(--form-choice); font-size: 13px; line-height: 1.5; }
+.form-choice input:checked + span { color: var(--form-selected-ink); background: var(--form-selected); border-color: var(--form-selected); }
+.choice-check { display: none; margin-right: 8px; font-style: normal; }
+.form-choice input:checked + span .choice-check { display: inline; }
+.invitation-form :is(input, textarea, select, button):focus-visible, .form-choice input:focus-visible + span { outline: 2px solid var(--form-focus); outline-offset: 4px; }
+.form-choice input:focus-visible { outline: none; }
+.invitation-form button.form-submit { display: block; width: 100%; min-height: 52px; margin: 8px 0 0; padding: 14px 20px; border: 1px solid var(--form-selected); border-radius: 0; color: var(--form-selected-ink); background: var(--form-selected); font: 400 14px/1.5 'Inter', Arial, sans-serif; transition: opacity 160ms ease; }
+.invitation-form button.form-submit:hover { opacity: .85; }
+.invitation-form button.form-submit:disabled { cursor: wait; opacity: .65; }
+.invitation-form .form-status { min-height: 1.6em; margin: 14px 0 0; color: var(--form-ink); font-size: 13px; line-height: 1.6; }
+.gift-form-panel { padding: 0; background: transparent; }
+.gift-form-panel .gift-dialog-title { margin-bottom: 36px; }
+.gift-dialog-layout .bank-row { gap: 16px; }
+.gift-dialog-layout .bank-row > div { min-width: 0; overflow-wrap: anywhere; }
+.gift-dialog-layout .bank-row button { flex-shrink: 0; min-height: 44px; min-width: 44px; }
+@media (max-width: 767px) {
+  .invitation-form .invitation-field { margin-bottom: 28px; }
+  .invitation-form .invitation-label { gap: 6px; }
+  .form-choice > span { padding: 12px 14px; }
+  .gift-form-panel { margin-top: 48px; }
+  .gift-form-panel .gift-dialog-title { font-size: 30px; line-height: 1.2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .invitation-form input, .invitation-form textarea, .invitation-form select, .invitation-form button { transition: none; }
+}
+@media (forced-colors: active) {
+  .form-choice input:checked + span { border: 3px solid Highlight; }
+}

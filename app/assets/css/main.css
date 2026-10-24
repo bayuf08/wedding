@@ -12,6 +12,7 @@
 @import "./motion.css";
 @import "./access-shell.css";
 @import "./scenes.css";
+@import "./forms.css";
 
 * { box-sizing: border-box; }
 html { background: #000; }
