@@ -105,7 +105,7 @@
         "title": "Akad Nikah Bayu & Hilwa",
         "startsAt": "2026-12-26T08:00:00+07:00",
         "endsAt": "2026-12-26T10:00:00+07:00",
-        "location": "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Tambun Utara, Kabupaten Bekasi, Jawa Barat"
+        "location": "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Kec. Tambun Utara, Kabupaten Bekasi, Jawa Barat"
       }
     },
     "events": {
@@ -118,7 +118,7 @@
           "label": "Akad Nikah",
           "lines": [
             "8 AM - 10 AM",
-            "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Tambun Utara, Kabupaten Bekasi, Jawa Barat"
+            "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Kec. Tambun Utara, Kabupaten Bekasi, Jawa Barat"
           ],
           "action": {
             "label": "Open ceremony map",
@@ -131,7 +131,7 @@
           "label": "Resepsi",
           "lines": [
             "10 AM - 2 PM",
-            "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Tambun Utara, Kabupaten Bekasi, Jawa Barat"
+            "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Kec. Tambun Utara, Kabupaten Bekasi, Jawa Barat"
           ],
           "action": {
             "label": "Open reception map",
@@ -161,7 +161,7 @@
           "id": "preview-c",
           "bank": "",
           "holder": "Address for sending gifts :",
-          "account": "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Tambun Utara, Kabupaten Bekasi, Jawa Barat"
+          "account": "Vila Mutiara Gading 2 Blok B6 No. 29, Karangsatria, Kec. Tambun Utara, Kabupaten Bekasi, Jawa Barat"
         }
       ]
     },

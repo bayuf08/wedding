@@ -48,6 +48,13 @@ describe('Google Calendar template', () => {
     const url = new URL(googleCalendarUrl(invitation.content.celebration.calendar)!)
     expect(url.searchParams.get('dates')).toBe('20261226T010000Z/20261226T030000Z')
     expect(url.searchParams.get('ctz')).toBe('Asia/Jakarta')
+    const location = invitation.content.celebration.calendar.location
+    expect(location.match(/Kec\. Tambun Utara/g)).toHaveLength(1)
+    expect(location).not.toContain('Kec. Kec.')
+    expect(url.searchParams.get('location')).toBe(location)
+    const venueRows = invitation.content.events.rows.filter(row => row.lines.some(line => line.includes('Tambun Utara')))
+    expect(venueRows).toHaveLength(2)
+    for (const row of venueRows) expect(row.lines).toContain(location)
   })
   it('targets Chrome on Android with an exactly encoded web fallback, without native insert extras', () => {
     const special = { ...event, title: 'Hilwa & Bayu #1; 🎉', description: 'A? B=2\nC + D' }
