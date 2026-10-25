@@ -29,3 +29,11 @@ export function googleCalendarUrl(event: CalendarRecord | null): string | null {
     ctz: 'Asia/Jakarta', location: event.location, details: event.description || event.title })
   return `https://calendar.google.com/calendar/render?${params}`
 }
+
+export function calendarHandoffUrl(event: CalendarRecord | null, userAgent = ''): string | null {
+  const webUrl = googleCalendarUrl(event)
+  if (!webUrl || !/Android/i.test(userAgent)) return webUrl
+  // Target a browser, not Calendar's app-link handler. No native INSERT activity
+  // is assumed to be BROWSABLE, and opening this URL never saves an event.
+  return `intent://${webUrl.slice('https://'.length)}#Intent;scheme=https;action=android.intent.action.VIEW;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(webUrl)};end`
+}

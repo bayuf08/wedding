@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import ResponsivePhoto from '../../ui/ResponsivePhoto.vue'
 import MarqueeStrip from '../shared/MarqueeStrip.vue'
 import type { ClaireContent, ImageAsset } from '../../../types/claire'
-import { googleCalendarUrl } from '../../../utils/calendar'
+import CalendarAction from '../shared/CalendarAction.vue'
 const props = defineProps<{ celebration: ClaireContent['celebration']; image: ImageAsset }>()
-const calendarUrl = computed(() => googleCalendarUrl(props.celebration.calendar))
 const countdown = ref([
   { label: 'D', value: '00' },
   { label: 'H', value: '00' },
@@ -44,7 +43,7 @@ onBeforeUnmount(() => {
     <div class="celebration-image-wrap"><MarqueeStrip :text="celebration.ribbon" muted /><div class="celebration-portrait"><ResponsivePhoto :asset="image" sizes="335px" /></div></div>
     <div class="celebration-lower scene-container motion-entry">
       <div class="countdown" :aria-label="`Countdown: ${countdown[0]!.value} days, ${countdown[1]!.value} hours, ${countdown[2]!.value} minutes and ${countdown[3]!.value} seconds`"><span v-for="unit in countdown" :key="unit.label" class="countdown-pair"><span class="claire-countdown">{{ unit.value }}</span><small>{{ unit.label }}</small></span></div>
-      <div class="calendar-action"><a v-if="calendarUrl" class="calendar-button" :href="calendarUrl" target="_blank" rel="noopener noreferrer" aria-label="Add to Calendar in Google Calendar (opens in a new tab)">Add to<br>Calendar</a><p v-else role="status">Calendar details are not available yet.</p></div>
+      <CalendarAction :event="celebration.calendar" />
     </div>
   </section>
 </template>

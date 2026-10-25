@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { googleCalendarUrl, makeCalendar } from '../../app/utils/calendar'
+import { calendarHandoffUrl, googleCalendarUrl, makeCalendar } from '../../app/utils/calendar'
+import invitation from '../../app/assets/data/invitation.json'
 
 const event = {
   uid: 'bayu-hilwa-preview',
@@ -43,6 +44,22 @@ describe('calendar serialization', () => {
 })
 
 describe('Google Calendar template', () => {
+  it('preserves the canonical wedding date and WIB offset', () => {
+    const url = new URL(googleCalendarUrl(invitation.content.celebration.calendar)!)
+    expect(url.searchParams.get('dates')).toBe('20261226T010000Z/20261226T030000Z')
+    expect(url.searchParams.get('ctz')).toBe('Asia/Jakarta')
+  })
+  it('targets Chrome on Android with an exactly encoded web fallback, without native insert extras', () => {
+    const special = { ...event, title: 'Hilwa & Bayu #1; 🎉', description: 'A? B=2\nC + D' }
+    const web = googleCalendarUrl(special)!
+    const intent = calendarHandoffUrl(special, 'Mozilla/5.0 (Linux; Android 15) Chrome/130')!
+    expect(intent).toBe(`intent://${web.slice(8)}#Intent;scheme=https;action=android.intent.action.VIEW;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(web)};end`)
+    expect(decodeURIComponent(intent.split('S.browser_fallback_url=')[1]!.split(';end')[0]!)).toBe(web)
+    expect(intent).not.toContain('INSERT')
+    expect(intent).not.toContain('beginTime')
+    expect(calendarHandoffUrl(null, 'Android')).toBeNull()
+    for (const ua of ['', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18)', 'Windows NT 10.0']) expect(calendarHandoffUrl(special, ua)).toBe(web)
+  })
   it('encodes canonical title, venue and description and displays the UTC event in Jakarta', () => {
     const details = 'Akad & reception?\nPlease review and save.'
     const url = new URL(googleCalendarUrl({ ...event, description: details })!)
