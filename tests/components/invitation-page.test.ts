@@ -92,11 +92,11 @@ describe('ResponsivePhoto', () => {
 
   it('reserves actual dimensions and recovers when the source changes', async () => {
     const wrapper = mount(ResponsivePhoto, { props: { asset: mediaManifest.cover! } })
-    expect(wrapper.get('img').attributes('width')).toBe('858')
-    expect(wrapper.get('img').attributes('height')).toBe('1280')
+    expect(wrapper.get('img').attributes('width')).toBe(String(mediaManifest.cover!.width))
+    expect(wrapper.get('img').attributes('height')).toBe(String(mediaManifest.cover!.height))
     await wrapper.get('img').trigger('error')
     expect(wrapper.get('[role="img"]').text()).toContain('Image unavailable')
     await wrapper.setProps({ asset: mediaManifest['gallery-02']! })
-    expect(wrapper.get('img').attributes('src')).toContain('00155.jpg')
+    expect(wrapper.get('img').attributes('src')).toBe(mediaManifest['gallery-02']!.src)
   })
 })
